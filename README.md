@@ -1,0 +1,1 @@
+# bitacora-de-paros-planta
