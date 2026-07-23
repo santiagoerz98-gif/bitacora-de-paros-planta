@@ -42,19 +42,16 @@ Este proyecto implementa una solución **End-to-End** que automatiza la ingesta,
 ## 📂 Estructura del Repositorio
 
 ```text
+├── SQL/
+│   ├── Consulta creacion de vistas bitacora.sql   # Scripts SQL para vistas analíticas en BigQuery
+│   └── Consulta limpieza de fechas.sql            # Consultas para transformación y formateo de fechas
 ├── data/
-│   ├── raw_downtime.csv            # Dataset original con texto libre y fechas sin formato
-│   └── cleaned_downtime.csv        # Dataset procesado listo para carga
-├── python/
-│   ├── main_pipeline.py            # Script principal de ETL y limpieza con Pandas/Regex
-│   └── bigquery_uploader.py        # Módulo de carga automatizada hacia GCP BigQuery
-├── sql/
-│   ├── 01_vw_bitacora_limpia.sql   # Vista base con tipado y filtrado
-│   ├── 02_vw_kpis_operativos.sql   # Consultas de agregación por Área y Turno
-│   └── 03_vw_pareto_causas.sql     # Vista con ordenamiento y % acumulado (80/20)
-├── pbix/
-│   └── Dashboard_Paros_Planta.pbix # Reporte interactivo de Power BI
-├── docs/
-│   └── arquitectura_pipeline.png   # Diagrama explicativo del proceso
-├── README.md                       # Documentación del proyecto
-└── requirements.txt                # Librerías de Python requeridas
+│   ├── clean/
+│   │   └── bitacora_mantenimiento_paros_limpia.csv       # Dataset procesado y estandarizado
+│   └── raw/
+│       └── bitacora_mantenimiento_paros.csv       # Archivo CSV original con texto libre y datos crudos
+├── reports/
+│   └── bitacora_paros_report.pbix                 # Dashboard interactivo de Power BI
+└── scripts/
+    ├── cargar_bitacora_de_paros.py                # Script de automatización para ingesta y carga a BigQuery
+    └── catalogo_paros.py                          # Script de limpieza, Regex y mapeo de categorías
